@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Association Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            color: #343a40;
+        }
+        .results {
+            margin-top: 20px;
+        }
+        .results h2 {
+            font-size: 1.8rem;
+            color: #343a40;
+            margin-bottom: 20px;
+        }
+        .table {
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Product Association Results for "{{ product }}"</h1>
+        </div>
+        <div class="results">
+            <h2>Best Associations</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Antecedents</th>
+                        <th>Consequents</th>
+                        <th>Confidence</th>
+                        <th>Lift</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for index, row in best_results.iterrows() %}
+                    <tr>
+                        <td>{{ row['Antecedents'] }}</td>
+                        <td>{{ row['Consequents'] }}</td>
+                        <td>{{ row['Confidence'] }}</td>
+                        <td>{{ row['Lift'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="results">
+            <h2>Medium Associations</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Antecedents</th>
+                        <th>Consequents</th>
+                        <th>Confidence</th>
+                        <th>Lift</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for index, row in medium_results.iterrows() %}
+                    <tr>
+                        <td>{{ row['Antecedents'] }}</td>
+                        <td>{{ row['Consequents'] }}</td>
+                        <td>{{ row['Confidence'] }}</td>
+                        <td>{{ row['Lift'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="results">
+            <h2>Low Associations</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Antecedents</th>
+                        <th>Consequents</th>
+                        <th>Confidence</th>
+                        <th>Lift</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for index, row in low_results.iterrows() %}
+                    <tr>
+                        <td>{{ row['Antecedents'] }}</td>
+                        <td>{{ row['Consequents'] }}</td>
+                        <td>{{ row['Confidence'] }}</td>
+                        <td>{{ row['Lift'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
